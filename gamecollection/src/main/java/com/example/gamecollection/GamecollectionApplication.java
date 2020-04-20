@@ -11,7 +11,7 @@ import com.example.gamecollection.domain.Game;
 import com.example.gamecollection.domain.GameRepository;
 import com.example.gamecollection.domain.Genre;
 import com.example.gamecollection.domain.GenreRepository;
-import com.example.gamecollection.domain.User;
+import com.example.gamecollection.domain.Kayttaja;
 import com.example.gamecollection.domain.UserRepository;
 
 @SpringBootApplication
@@ -40,8 +40,8 @@ public class GamecollectionApplication {
 			gamerepository.save(new Game("RE1 Remake", "Capcom", 2002, 15.00, "PS4", "64%", grepository.findByName("Survival Horror").get(0))); 
 			
 			// creates and saves user and admin
-			User user1 = new User("random user", "$2y$12$cFlsVwevz2vI.R2NZ6LShul5uhVk4iE7lMdTUR9gGsijMXg5JsV.S", "USER");
-			User user2 = new User("Lotta", "$2b$10$.Aply6F9ac2sL1NW3iTLbeWfUBtkciaEnidv79ltRmirlytV05qc.", "LOTTA");
+			Kayttaja user1 = new Kayttaja("random user", "$2y$12$cFlsVwevz2vI.R2NZ6LShul5uhVk4iE7lMdTUR9gGsijMXg5JsV.S", "USER");
+			Kayttaja user2 = new Kayttaja("Lotta", "$2b$10$.Aply6F9ac2sL1NW3iTLbeWfUBtkciaEnidv79ltRmirlytV05qc.", "LOTTA");
 			urepository.save(user1);
 			urepository.save(user2);
 			
