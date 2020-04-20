@@ -1,0 +1,53 @@
+<!-- this is the home page, which contains a list of all games -->
+
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" type="text/css" href="css/css.css">
+<style>
+body{
+	background-color:
+}
+</style>
+<head>
+    <title>Games</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1 align="center">Games</h1>
+	<div class="col-md-4">
+	</div>
+	<br>
+    <table class="table table-striped" table align="center">
+		<tr>
+	   <!--	<th>ID</th>	--> 
+		    <th>Title</th>
+		    <th>Publisher</th>
+		    <th>Year</th>
+		    <th>Price</th>
+		    <th>Platform</th>
+		    <th>Completion</th>
+		    <th>Genre</th>
+		    
+		    <th>Edit</th>
+		    <th>Delete</th>
+		</tr>  
+		
+    	<tr th:each = "game : ${games}">
+       <!-- <td th:text="${game.id}"></td> --> 
+    		<td th:text="${game.title}"></td>
+    		<td th:text="${game.publisher}"></td>
+    		<td th:text="${game.year}"></td>
+    		<td th:text="${game.price}"></td>
+    		<td th:text="${game.platform}"></td>
+    		<td th:text="${game.completion}"></td>
+    		<td th:text="${game.genre.name}"></td> 
+    		<td><a th:href="@{/edit/{id}(id=${game.id})}">Edit</a></td> 
+    		<td><a th:href="@{/delete/{id}(id=${game.id})}">Delete</a></td>   		
+ 
+    	</tr>
+     </table>
+     <p style="text-align:center"><a href="@{/edit/{id}(id=${game.id})}">Edit</a></p>
+   <p style="text-align:center"><a href="@{/delete/{id}(id=${game.id})}">Delete</a></p>
+    <p style="text-align:center"><a href="/add" >Add Game</a></p>
+</body>
+</html>

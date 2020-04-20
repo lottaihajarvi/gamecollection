@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Games</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Edit Game</h1>
+	<div>
+		<form th:object="${game}" th:action="@{../save}" action="#" method="post">
+		  	<label for="id"></label>
+		  	<input type="hidden" id="id" th:field="*{id}" readonly="readonly" />
+		  	<label for="otsikko">Title</label>
+			<input type="text" id="otsikko" th:field="*{title}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+		  	<label for="julkaisija">Publisher</label>
+			<input type="text" id="julkaisija" th:field="*{publisher}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+		  	<label for="vuosi">Year</label>
+			<input type="text" th:field="*{year}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<label for="hinta">Price</label>
+			<input type="text" id="hinta" th:field="*{price}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<label for="alusta">Platform</label>
+			<input type="text" id="alusta" th:field="*{platform}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<label for="suoritus">Completion</label>
+			<input type="text" id="suoritus" th:field="*{completion}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+			<label for="genlist">Genre</label>
+			 <select id="genlist" th:field="*{genre}" class="form-control">
+       			<option th:each="genre: ${genres}" th:value="${genre.genreid}" th:text="${genre.name}"></option>
+    		</select>
+			
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<input type="submit" value="Save"></input>
+		</form>
+	</div>
+</body>
+</html>
