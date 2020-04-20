@@ -5,16 +5,16 @@
 <link rel="stylesheet" type="text/css" href="css/css.css">
 <style>
 body{
-	background-color: 
+	background-color: rgba(76, 175, 80, 0.1);
 }
 </style>
 <head>
-    <title>My Game Collection</title>
+    <title>Video Games</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-<h3 th:inline="text">Welcome [[${#httpServletRequest.remoteUser}]]!</h3>
-	<h1 align="center">Video Games</h1>
+	<h1 align="center">Playing right now...</h1>
+	<h3 th:inline="text" align="center">Welcome [[${#httpServletRequest.remoteUser}]]!</h3>
 	<div class="col-md-4">
 	</div>
 	<br>
@@ -26,28 +26,28 @@ body{
 		    <th>Year</th>
 		    <th>Price</th>
 		    <th>Platform</th>
-		    <th>Completion</th>
 		    <th>Genre</th>
+		    <th>Completion</th>
 		    <th>Edit</th>
 		    <th>Delete</th>
 		</tr>  
 		
-    	<tr th:each = "game : ${games}">
+    	<tr th:if="${game.completion != '100%'}" th:each = "game : ${games}">
        <!-- <td th:text="${game.id}"></td> --> 
     		<td th:text="${game.title}"></td>
     		<td th:text="${game.publisher}"></td>
     		<td th:text="${game.year}"></td>
-    		<td th:text="${game.price}"></td>
+    		<td th:text="${game.price}+ €"></td>
     		<td th:text="${game.platform}"></td>
-    		<td th:text="${game.completion}"></td>
     		<td th:text="${game.genre.name}"></td> 
-    		<td sec:authorize="hasAuthority('LOTTA')"><a th:href="@{/edit/{id}(id=${game.id})}" class="btn btn-sm btn-danger">Edit</a></td> 
-    		<td sec:authorize="hasAuthority('LOTTA')"><a th:href="@{/delete/{id}(id=${game.id})}" class="btn btn-sm btn-danger">Delete</a></td>   		
+    		<td th:text="${game.completion}"></td>
+    		<td sec:authorize="hasAuthority('LOTTA')"><a th:href="@{/edit/{id}(id=${game.id})}" class="button2">Edit</a></td> 
+    		<td sec:authorize="hasAuthority('LOTTA')"><a th:href="@{/delete/{id}(id=${game.id})}" class="button2">Delete</a></td>   		
     	</tr>
      </table>
-    <p style="text-align:center"><a href="/add" class="btn btn-sm btn-danger">Add Game</a></p>
+   	<p style="text-align:center"><a href="/add" class="button">Add Game</a></p>
     
-    <h1 align="center">100% Completed</h1>
+    <h2 align="center">100% Completed</h2>
     <table id=table2 class="table table-striped" table align="center">
     	<tr>
     	 	<th>Title</th>
@@ -55,21 +55,21 @@ body{
 		    <th>Year</th>
 		    <th>Price</th>
 		    <th>Platform</th>
-		    <th>Completion</th>
 		    <th>Genre</th>
+		    <th>Completion</th>
     	</tr>
     	<tr th:if="${game.completion == '100%'}" th:each="game : ${games}">
     		<td th:text="${game.title}"></td>
     		<td th:text="${game.publisher}"></td>
     		<td th:text="${game.year}"></td>
-    		<td th:text="${game.price}"></td>
+    		<td th:text="${game.price}+ €"></td>
     		<td th:text="${game.platform}"></td>
-    		<td th:text="${game.completion}"></td>
     		<td th:text="${game.genre.name}"></td>
+    		<td th:text="${game.completion}"></td>
     </table>
     <div class="col-md-4" style="padding:20px 0">
 		<form th:action="@{/logout}" method="post">
-			<p style="text-align:center"><input type="submit" value="Sign Out" class="btn btn-sm btn-danger"/></p>
+			<p style="text-align:center"><input type="submit" value="Sign Out" class="button"/></p>
 		</form>
 	</div>
 </body>

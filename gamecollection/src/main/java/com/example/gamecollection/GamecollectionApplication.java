@@ -29,14 +29,17 @@ public class GamecollectionApplication {
 			log.info("save a couple of games");
 			// demo genres to database
 			grepository.save(new Genre("RPG"));
-			grepository.save(new Genre("Simulation"));
+			grepository.save(new Genre("Action-Adventure"));
 			grepository.save(new Genre("Survival Horror"));
+			grepository.save(new Genre("Simulation"));
 			
 			// demo data to database
-			gamerepository.save(new Game("FF7 Remake", "Square Enix", 2020, 64.95, "PS4", "100%", grepository.findByName("RPG").get(0)));
-			gamerepository.save(new Game("RE2 Remake", "Capcom", 2019, 24.45, "PS4, Xbox, Windows", "25%", grepository.findByName("Survival Horror").get(0)));	
-			gamerepository.save(new Game("Animal Crossing", "Nintendo", 2020, 50.00, "Nintendo Switch", "50%", grepository.findByName("Simulation").get(0)));
+			gamerepository.save(new Game("DQXI", "Square Enix", 2017, 62.95, "PS4", "100%", grepository.findByName("RPG").get(0)));
+			gamerepository.save(new Game("Shadow of the Colossus", "Team Ico", 2018, 24.45, "PS4", "100%", grepository.findByName("Action-Adventure").get(0)));	
+			gamerepository.save(new Game("Breath of the Wild", "Nintendo", 2017, 70.00, "Nintendo Switch", "98%", grepository.findByName("Action-Adventure").get(0)));
+			gamerepository.save(new Game("RE1 Remake", "Capcom", 2002, 15.00, "PS4", "64%", grepository.findByName("Survival Horror").get(0))); 
 			
+			// creates and saves user and admin
 			User user1 = new User("random user", "$2y$12$cFlsVwevz2vI.R2NZ6LShul5uhVk4iE7lMdTUR9gGsijMXg5JsV.S", "USER");
 			User user2 = new User("Lotta", "$2b$10$.Aply6F9ac2sL1NW3iTLbeWfUBtkciaEnidv79ltRmirlytV05qc.", "LOTTA");
 			urepository.save(user1);
