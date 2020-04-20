@@ -18,8 +18,10 @@ public class Genre {
 	private Long genreid;
 	private String name;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "genre")
-	@JsonBackReference
+	// one-to-many relationship between task and category entities
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "genre") 
+	@JsonBackReference //  keeps connection between entities functional over REST API
+	// list of games;
 	private List<Game> games;
 
 	public Genre() {}

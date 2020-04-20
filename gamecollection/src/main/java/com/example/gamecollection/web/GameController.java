@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,6 +28,11 @@ public class GameController {
 		 // brings genre repository
 		@Autowired
 		private GenreRepository grepository;
+		
+		@RequestMapping(value="/login")
+		public String login() {
+			return "login";
+		} 
 		
 		// RESTful service to get all tasks
 	    @RequestMapping(value="/games", method = RequestMethod.GET) // returns games as JSON format
@@ -64,6 +70,8 @@ public class GameController {
 		
 	    }
 	    
+	    // edit game
+	    @PreAuthorize("hasAuthority('LOTTA')")
 	    @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
 	    // retrieves a game with an sql statement from the database with this id
 		 public String editGame(@PathVariable("id") Long gameId, Model model) { // contains edited object instead of empty object
@@ -73,7 +81,8 @@ public class GameController {
 			return "editgame";
 	  }
 	    
-
+	    // delete game
+	    @PreAuthorize("hasAuthority('LOTTA')")
 		@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET) // handles /delete/gameid endpoint
 	    public String deleteGame(@PathVariable("id") Long gameId, Model model) { // @PathVariable extracts id from the URI
 	    	repository.deleteById(gameId);

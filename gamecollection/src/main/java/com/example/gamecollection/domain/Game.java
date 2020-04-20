@@ -10,9 +10,12 @@ import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+//a table in database aka task table
 @Entity
 public class Game {
+	//id column of the table
 	@Id
+	// automatically generates a unique primary key for every new object 
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	private String title;
@@ -22,9 +25,9 @@ public class Game {
 	private String platform;
 	private String completion;
 	
-	@ManyToOne
-	@JsonManagedReference
-	@JoinColumn(name = "genreid")
+	@ManyToOne // many-to-one relationship between task and category entities
+	@JsonManagedReference // stops endless loop in entity relationship 
+	@JoinColumn(name = "genreid") // defines entity as the owner of the relationship
 	private Genre genre;
 
 	public Game() {}
