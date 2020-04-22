@@ -45,6 +45,10 @@ public class GameController {
 	    public @ResponseBody Optional<Game> findGameRest(@PathVariable("id") Long gameId) {	
 	    	return repository.findById(gameId);
 	    }
+	    
+	    // other restful services ->
+	    // rest delete: curl -X DELETE http://localhost:8080/games/5
+	    //rest add: curl -i -X POST -H "Content-Type:application/json" -d '{ "title" : "Three Houses", "publisher" : "Intsys", "year" : "2019", "price" : "67.99", "price" : "29.95", "platform" : "Nintendo Switch", "status": "Completed"  }' http://localhost:8080/games
 		
 		// shows all games. handles GET request from endpoint /gamelist
 		@RequestMapping(value= {"/", "/gamelist"})
