@@ -34,12 +34,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter { // configu
     protected void configure(HttpSecurity http) throws Exception { 
     	// define URL paths to be secured 
     	http
-		.authorizeRequests()
-			.antMatchers("/", "/gamelist").permitAll() // does not require authentication
+    		.authorizeRequests().antMatchers("/css/**").permitAll() // does not require authentication
 			.anyRequest().authenticated()
 			.and()
 		.formLogin()
 			.loginPage("/login")
+			.defaultSuccessUrl("/gamelist")
 			.permitAll()
 			.and()
 		.logout()
