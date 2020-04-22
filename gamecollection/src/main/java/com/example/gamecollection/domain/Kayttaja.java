@@ -9,11 +9,12 @@ import javax.persistence.Id;
 @Entity
 public class Kayttaja {
 	
-	@Id
+	@Id //id column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, updatable = false)
     private Long id;
 
+	// username with unique constraint
     @Column(name = "username", nullable = false, unique = true)
     private String username;
 
@@ -26,12 +27,14 @@ public class Kayttaja {
     public Kayttaja() {
     }
 
+    // constructor using fields
 	public Kayttaja(String username, String passwordHash, String role) {
 		this.username = username;
 		this.passwordHash = passwordHash;
 		this.role = role;
 	}
 
+	// getters and setters
 	public Long getId() {
 		return id;
 	}

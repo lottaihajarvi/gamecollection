@@ -71,7 +71,7 @@ public class GameController {
 	    }
 	    
 	    // edit game
-	    @PreAuthorize("hasAuthority('LOTTA')")
+	    @PreAuthorize("hasAuthority('LOTTA')") // secures method to user LOTTA
 	    @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
 	    // retrieves a game with an sql statement from the database with this id
 		 public String editGame(@PathVariable("id") Long gameId, Model model) { // contains edited object instead of empty object
@@ -82,7 +82,7 @@ public class GameController {
 	  }
 	    
 	    // delete game
-	    @PreAuthorize("hasAuthority('LOTTA')")
+	    @PreAuthorize("hasAuthority('LOTTA')") // secures method to user LOTTA
 		@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET) // handles /delete/gameid endpoint
 	    public String deleteGame(@PathVariable("id") Long gameId, Model model) { // @PathVariable extracts id from the URI
 	    	repository.deleteById(gameId);

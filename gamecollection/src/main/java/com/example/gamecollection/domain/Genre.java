@@ -13,8 +13,8 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 public class Genre {
-	@Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+	@Id //id column
+    @GeneratedValue(strategy=GenerationType.AUTO) // automatically generates a unique primary key for every new object 
 	private Long genreid;
 	private String name;
 	
@@ -25,11 +25,13 @@ public class Genre {
 	private List<Game> games;
 
 	public Genre() {}
-
+	
+	// constructor using fields
 	public Genre(String name) {
 		this.name = name;
 	}
 
+	// getters and setters
 	public Long getGenreid() {
 		return genreid;
 	}
@@ -54,7 +56,7 @@ public class Genre {
 		this.games = games;
 		
 }
-
+	//toString
 	@Override
 	public String toString() {
 		return "Genre [genreid=" + genreid + ", name=" + name + "]";

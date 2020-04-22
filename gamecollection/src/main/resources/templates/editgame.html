@@ -1,40 +1,78 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
+<style>
+input[type=text], select {
+  text-align: center;
+  width: 11%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  background-color: #008080;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  border-radius: 50%;
+}
+
+div {
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #f2f2f2;
+}
+</style>
 <head>
     <title>My Game Collection</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-	<h1>Edit Game</h1>
+	<h1 align="center">Edit Game</h1>
 	<div>
-		<form th:object="${game}" th:action="@{../save}" action="#" method="post">
+		<form th:object="${game}" th:action="@{../save}" action="#" method="post" align="center">
 		  	<label for="id"></label>
 		  	<input type="hidden" id="id" th:field="*{id}" readonly="readonly" />
 		  	<label for="otsikko">Title</label>
+		  	<div class="col-md-4" style="padding:1px 0"></div>
 			<input type="text" id="otsikko" th:field="*{title}" />
-			<div style="clear: both; display: block; height: 10px;"></div>
+			<div style="clear: both; display: block; height: 5px;"></div>
 		  	<label for="julkaisija">Publisher</label>
+		  	<div class="col-md-4" style="padding:1px 0"></div>
 			<input type="text" id="julkaisija" th:field="*{publisher}" />
-			<div style="clear: both; display: block; height: 10px;"></div>
+			<div style="clear: both; display: block; height: 5px;"></div>
 		  	<label for="vuosi">Year</label>
+		  	<div class="col-md-4" style="padding:1px 0"></div>
 			<input type="text" th:field="*{year}" />
-			<div style="clear: both; display: block; height: 10px;"></div>
+			<div style="clear: both; display: block; height: 5px;"></div>
 			<label for="hinta">Price</label>
+			<div class="col-md-4" style="padding:1px 0"></div>
 			<input type="text" id="hinta" th:field="*{price}" />
-			<div style="clear: both; display: block; height: 10px;"></div>
+			<div style="clear: both; display: block; height: 5px;"></div>
 			<label for="alusta">Platform</label>
+			<div class="col-md-4" style="padding:1px 0"></div>
 			<input type="text" id="alusta" th:field="*{platform}" />
-			<div style="clear: both; display: block; height: 10px;"></div>
-			<label for="suoritus">Completion</label>
-			<input type="text" id="suoritus" th:field="*{completion}" />
-			<div style="clear: both; display: block; height: 10px;"></div>
+			<div style="clear: both; display: block; height: 5px;"></div>
+			<label for="suoritus">Status</label>
+			<div class="col-md-4" style="padding:1px 0"></div>
+			<input type="text" id="suoritus" th:field="*{status}" />
+			<div style="clear: both; display: block; height: 5px;"></div>
 			
 			<label for="genlist">Genre</label>
+			<div class="col-md-4" style="padding:1px 0"></div>
 			 <select id="genlist" th:field="*{genre}" class="form-control">
        			<option th:each="genre: ${genres}" th:value="${genre.genreid}" th:text="${genre.name}"></option>
     		</select>
 			
-			<div style="clear: both; display: block; height: 10px;"></div>
+			<div style="clear: both; display: block; height: 5px;"></div>
 			<input type="submit" value="Save"></input>
 		</form>
 	</div>

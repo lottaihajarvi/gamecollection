@@ -33,14 +33,17 @@ public class GamecollectionApplication {
 			grepository.save(new Genre("Survival Horror"));
 			grepository.save(new Genre("Simulation"));
 			
-			// demo data to database
-			gamerepository.save(new Game("DQXI", "Square Enix", 2017, 62.95, "PS4", "100%", grepository.findByName("RPG").get(0)));
-			gamerepository.save(new Game("Shadow of the Colossus", "Team Ico", 2018, 24.45, "PS4", "100%", grepository.findByName("Action-Adventure").get(0)));	
-			gamerepository.save(new Game("Breath of the Wild", "Nintendo", 2017, 70.00, "Nintendo Switch", "98%", grepository.findByName("Action-Adventure").get(0)));
-			gamerepository.save(new Game("RE1 Remake", "Capcom", 2002, 15.00, "PS4", "64%", grepository.findByName("Survival Horror").get(0))); 
+			// demo data to database -> title, publisher, year, price, platform, status and genre
+			gamerepository.save(new Game("DQXI", "Square Enix", 2017, 62.95, "PS4", "Completed", grepository.findByName("RPG").get(0)));
+			gamerepository.save(new Game("Shadow of the Colossus", "Team Ico", 2018, 24.45, "PS4", "Completed", grepository.findByName("Action-Adventure").get(0)));	
+			gamerepository.save(new Game("Breath of the Wild", "Nintendo", 2017, 70.00, "Nintendo Switch", "Playing", grepository.findByName("Action-Adventure").get(0)));
+			gamerepository.save(new Game("RE1 Remake", "Capcom", 2002, 15.75, "PS4", "Playing", grepository.findByName("Survival Horror").get(0)));
+			gamerepository.save(new Game("Animal Crossing", "Nintendo", 2020, 60.55, "Nintendo Switch", "Playing", grepository.findByName("Simulation").get(0)));
+			gamerepository.save(new Game("FF7 Remake", "Square Enix", 2020, 64.95, "PS4", "Queue", grepository.findByName("RPG").get(0)));
 			
-			// creates and saves user and admin
-			Kayttaja user1 = new Kayttaja("random user", "$2y$12$cFlsVwevz2vI.R2NZ6LShul5uhVk4iE7lMdTUR9gGsijMXg5JsV.S", "USER");
+			
+			// creates and saves user and admin/Lotta -> user's username, hashed password and role
+			Kayttaja user1 = new Kayttaja("random user", "$2y$12$cFlsVwevz2vI.R2NZ6LShul5uhVk4iE7lMdTUR9gGsijMXg5JsV.S", "USER"); 
 			Kayttaja user2 = new Kayttaja("Lotta", "$2b$10$.Aply6F9ac2sL1NW3iTLbeWfUBtkciaEnidv79ltRmirlytV05qc.", "LOTTA");
 			urepository.save(user1);
 			urepository.save(user2);

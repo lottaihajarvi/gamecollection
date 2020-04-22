@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.example.gamecollection.domain.Kayttaja;
 import com.example.gamecollection.domain.UserRepository;
 
+// used to authenticate and authorize user
 @Service
 public class UserDetailServiceImpl  implements UserDetailsService  {
 	private final UserRepository repository;

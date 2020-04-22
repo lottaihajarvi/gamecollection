@@ -10,39 +10,39 @@ import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
-//a table in database aka task table
-@Entity
+@Entity //a table in database aka task table
 public class Game {
-	//id column of the table
-	@Id
-	// automatically generates a unique primary key for every new object 
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	
+	@Id //id column of the table
+	@GeneratedValue(strategy=GenerationType.AUTO) // automatically generates a unique primary key for every new object 
 	private Long id;
 	private String title;
 	private String publisher;
 	private int year;
 	private double price;
 	private String platform;
-	private String completion;
+	private String status;
 	
 	@ManyToOne // many-to-one relationship between task and category entities
 	@JsonManagedReference // stops endless loop in entity relationship 
 	@JoinColumn(name = "genreid") // defines entity as the owner of the relationship
 	private Genre genre;
 
-	public Game() {}
+	public Game() {}  
 
-	public Game(String title, String publisher, int year, double price, String platform, String completion, Genre genre) {
+	// constructor using fields
+	public Game(String title, String publisher, int year, double price, String platform, String status, Genre genre) {
 		super();
 		this.title = title;
 		this.publisher = publisher;
 		this.year = year;
 		this.price = price;
 		this.platform = platform;
-		this.completion = completion;
+		this.status = status;
 		this.genre = genre;
 	}
 
+	// getters and setters
 	public Long getId() {
 		return id;
 	}
@@ -91,12 +91,12 @@ public class Game {
 		this.platform = platform;
 	}
 	
-	public String getCompletion() {
-		return completion;
+	public String getStatus() {
+		return status;
 	}
 
-	public void setcompletion(String completion) {
-		this.completion = completion;
+	public void setstatus(String status) {
+		this.status = status;
 	}
 
 	public Genre getGenre() {
@@ -107,14 +107,15 @@ public class Game {
 		this.genre = genre;
 	}
 
+	//toString
 	@Override
 	public String toString() {
 	if (this.genre != null)
 		return "Game [id=" + id + ", title=" + title + ", publisher=" + publisher + ", year=" + year + ", price="
-				+ price + ", platform=" + platform + ", completion=" + completion + this.getGenre() + "]";
+				+ price + ", platform=" + platform + ", status=" + status + this.getGenre() + "]";
 		else
 			return "Game [id=" + id + ", title=" + title + ", publisher=" + publisher + ", year=" + year + ", price="
-			+ price + ", platform=" + platform + ", completion=" + completion + "]";
+			+ price + ", platform=" + platform + ", status=" + status + "]";
 	}
 	
 
